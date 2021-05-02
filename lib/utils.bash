@@ -37,7 +37,7 @@ download_release() {
   version="$1"
   filename="$2"
 
-  url="$GH_REPO/releases/download/v${version}/zoxide-x86_64-unknown-linux-gnu"
+  url="$GH_REPO/releases/download/v${version}/zoxide-x86_64-unknown-linux-musl.tar.gz"
 
   echo "* Downloading $TOOL_NAME release $version..."
   curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
@@ -56,6 +56,7 @@ install_version() {
   (
     mkdir -p "$install_path/bin"
     download_release "$version" "$release_file"
+    tar -xf "$release_file" -C "$install_path/bin" --strip-components=1 || fail "Could not extract $release_file"
     chmod +x "$release_file"
 
     local tool_cmd
