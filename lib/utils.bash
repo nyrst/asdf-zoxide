@@ -37,7 +37,18 @@ download_release() {
   version="$1"
   filename="$2"
 
-  url="$GH_REPO/releases/download/v${version}/zoxide-x86_64-unknown-linux-musl.tar.gz"
+  local arch; arch=$(uname -m | tr '[:upper:]' '[:lower:]')
+  case ${arch} in
+  arm64)
+    url="$GH_REPO/releases/download/v${version}/zoxide-aarch64-unknown-linux-musl.tar.gz"
+    ;;
+  armv7l)
+    url="$GH_REPO/releases/download/v${version}/zoxide-armv7-unknown-linux-musleabihf.tar.gz"
+    ;;
+  x86_64)
+    url="$GH_REPO/releases/download/v${version}/zoxide-x86_64-unknown-linux-musl.tar.gz"
+    ;;
+  esac
 
   echo "* Downloading $TOOL_NAME release $version..."
   curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
