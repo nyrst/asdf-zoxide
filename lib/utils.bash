@@ -37,7 +37,7 @@ download_release() {
   version="$1"
   filename="$2"
 
-  url="$GH_REPO/releases/download/v${version}/zoxide-x86_64-unknown-linux-musl.tar.gz"
+  url="$GH_REPO/releases/download/v${version}/zoxide-v${version}-x86_64-unknown-linux-musl.tar.gz"
 
   echo "* Downloading $TOOL_NAME release $version..."
   curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
