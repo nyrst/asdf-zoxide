@@ -56,7 +56,7 @@ install_version() {
   (
     mkdir -p "$install_path/bin"
     download_release "$version" "$release_file"
-    tar -xf "$release_file" -C "$install_path/bin" --strip-components=1 || fail "Could not extract $release_file"
+    tar -xf "$release_file" -C "$install_path/bin" || fail "Could not extract $release_file"
     chmod +x "$release_file"
 
     local tool_cmd
