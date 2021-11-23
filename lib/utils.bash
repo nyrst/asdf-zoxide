@@ -40,13 +40,12 @@ download_release() {
   local arch; arch=$(uname -m | tr '[:upper:]' '[:lower:]')
   case ${arch} in
   arm64)
-    url="$GH_REPO/releases/download/v${version}/zoxide-aarch64-unknown-linux-musl.tar.gz"
+    url="$GH_REPO/releases/download/v${version}/zoxide-v${version}-aarch64-unknown-linux-musl.tar.gz"
     ;;
   armv7l)
-    url="$GH_REPO/releases/download/v${version}/zoxide-armv7-unknown-linux-musleabihf.tar.gz"
+    url="$GH_REPO/releases/download/v${version}/zoxide-v${version}-armv7-unknown-linux-musleabihf.tar.gz"
     ;;
   x86_64)
-    url="$GH_REPO/releases/download/v${version}/zoxide-x86_64-unknown-linux-musl.tar.gz"
     url="$GH_REPO/releases/download/v${version}/zoxide-v${version}-x86_64-unknown-linux-musl.tar.gz"
     ;;
   esac
