@@ -41,19 +41,19 @@ download_release() {
   local kernel; kernel=$(uname -s | tr '[:upper:]' '[:lower:]')
   case "${arch}-${kernel}" in
   arm64-linux)
-    url="$GH_REPO/releases/download/v${version}/zoxide-v${version}-aarch64-unknown-linux-musl.tar.gz"
+    url="$GH_REPO/releases/download/v${version}/zoxide-${version}-aarch64-unknown-linux-musl.tar.gz"
     ;;
   arm64-darwin)
-    url="$GH_REPO/releases/download/v${version}/zoxide-v${version}-aarch64-apple-darwin.tar.gz"
+    url="$GH_REPO/releases/download/v${version}/zoxide-${version}-aarch64-apple-darwin.tar.gz"
     ;;
   armv7l-linux)
-    url="$GH_REPO/releases/download/v${version}/zoxide-v${version}-armv7-unknown-linux-musleabihf.tar.gz"
+    url="$GH_REPO/releases/download/v${version}/zoxide-${version}-armv7-unknown-linux-musleabihf.tar.gz"
     ;;
   x86_64-linux)
-    url="$GH_REPO/releases/download/v${version}/zoxide-v${version}-x86_64-unknown-linux-musl.tar.gz"
+    url="$GH_REPO/releases/download/v${version}/zoxide-${version}-x86_64-unknown-linux-musl.tar.gz"
     ;;
   x86_64-darwin)
-    url="$GH_REPO/releases/download/v${version}/zoxide-v${version}-x86_64-apple-darwin.tar.gz"
+    url="$GH_REPO/releases/download/v${version}/zoxide-${version}-x86_64-apple-darwin.tar.gz"
     ;;
   *)
     fail "Could not determine release URL"
