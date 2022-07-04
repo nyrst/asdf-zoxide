@@ -38,16 +38,25 @@ download_release() {
   filename="$2"
 
   local arch; arch=$(uname -m | tr '[:upper:]' '[:lower:]')
-  case ${arch} in
-  arm64)
+  local kernel; kernel=$(uname -s | tr '[:upper:]' '[:lower:]')
+  case "${arch}-${kernel}" in
+  arm64-linux)
     url="$GH_REPO/releases/download/v${version}/zoxide-${version}-aarch64-unknown-linux-musl.tar.gz"
     ;;
-  armv7l)
+  arm64-darwin)
+    url="$GH_REPO/releases/download/v${version}/zoxide-${version}-aarch64-apple-darwin.tar.gz"
+    ;;
+  armv7l-linux)
     url="$GH_REPO/releases/download/v${version}/zoxide-${version}-armv7-unknown-linux-musleabihf.tar.gz"
     ;;
-  x86_64)
+  x86_64-linux)
     url="$GH_REPO/releases/download/v${version}/zoxide-${version}-x86_64-unknown-linux-musl.tar.gz"
     ;;
+  x86_64-darwin)
+    url="$GH_REPO/releases/download/v${version}/zoxide-${version}-x86_64-apple-darwin.tar.gz"
+    ;;
+  *)
+    fail "Could not determine release URL"
   esac
 
   echo "* Downloading $TOOL_NAME release $version..."
