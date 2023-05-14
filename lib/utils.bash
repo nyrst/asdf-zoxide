@@ -40,6 +40,9 @@ download_release() {
   local arch; arch=$(uname -m | tr '[:upper:]' '[:lower:]')
   local kernel; kernel=$(uname -s | tr '[:upper:]' '[:lower:]')
   case "${arch}-${kernel}" in
+  aarch64-linux)
+    url="$GH_REPO/releases/download/v${version}/zoxide-${version}-aarch64-unknown-linux-musl.tar.gz"
+    ;;
   arm64-linux)
     url="$GH_REPO/releases/download/v${version}/zoxide-${version}-aarch64-unknown-linux-musl.tar.gz"
     ;;
