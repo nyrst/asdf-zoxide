@@ -75,8 +75,9 @@ install_version() {
     fail "asdf-$TOOL_NAME supports release installs only"
   fi
 
-  local release_file="$install_path/bin/$TOOL_NAME"
+  local release_file="$ASDF_DOWNLOAD_PATH/$TOOL_NAME-$version.tar.gz"
   (
+    mkdir -p "$ASDF_DOWNLOAD_PATH"
     mkdir -p "$install_path/bin"
     download_release "$version" "$release_file"
     tar -xf "$release_file" -C "$install_path/bin" || fail "Could not extract $release_file"
